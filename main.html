@@ -1,0 +1,179 @@
+<html>
+    <title>
+    
+    </title>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <style>
+body {
+  background-image:url();
+  background-color:black;
+}
+
+#dashboard{
+    font-style: initial;
+    font-size:200%
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: white;
+  font: outline;
+  font-size: 60px
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+    opacity: 1;
+}  
+
+th ,td{
+  padding:5px
+}
+
+.jumbotron{
+  background-color:bisque;
+  
+}
+
+
+    </style>
+    </head>
+
+
+    <body><br>
+        <span id="dashboard">Dashboard</span>
+        <div class=" dropdown pull-right ">
+            
+        <button class="btn btn-primary dropdown-toggle btn-lg  " type="button" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">My Account
+        <span class="caret "></span>
+        </button>
+        
+        <ul class="dropdown-menu">
+            <li> <a href='#' >My Details</a></li>
+            <li> <a href='#' >My Books</a></li>
+            <li> <a href='#' >Logout</a></li>
+            
+        </ul>
+        </div><br><br><br>
+        <div id="landing-header" class=" ">
+        <h1>Welcome to OpenLib</h1>
+        <br>
+        <% if(noMatch!=null){ %>
+        <h2><% =noMatch %></h2>
+        <p>
+            <form action="#" method="GET" class="">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Book search..." class="form-inline">
+                    <input type="submit" value="Search" class="btn btn default">
+                </div>
+            </form>
+        </p>
+        <% } %>
+        
+        </div>
+        <% books.forEach(function(book){ %>
+            <div class="container-fluid col-sm-12 col-lg-6 jumbotron text-center" id="jumbotron">
+              <div>
+                <table style="width:100%">
+                  <tr>
+                    <th>Name</th>
+                    <td><% =book.name%></td>
+                  </tr>
+                  <tr>
+                    <th>Author</th>
+                    <td><% =book.author%></td>
+                  </tr>
+                  <tr>
+                      <th>Owner</th>
+                      <td> <% =book.owner%></td>
+                  </tr>
+                  <tr>
+                      <th></th>
+                      <td></td>
+                  </tr>
+                </table>
+                </div>
+                <div>
+                  <p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                  </p>
+                </div>
+            </div>
+       <% });%>
+
+            
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </body>
+</html>
